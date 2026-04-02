@@ -76,7 +76,6 @@ const Reviews: React.FC = () => {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <div className="eyebrow">Avaliações</div>
           <div className={styles.headerRow}>
             <h2 className="section-h">O que dizem nossos clientes</h2>
             <div className={styles.scoreWrap}>

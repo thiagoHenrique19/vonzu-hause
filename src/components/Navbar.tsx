@@ -6,7 +6,6 @@ import styles from './Navbar.module.css';
 const LINKS = [
   { href: '#sobre',       label: 'Sobre' },
   { href: '#produtos',    label: 'Produtos' },
-  { href: '#avaliacoes',  label: 'Avaliações' },
   { href: '#contato',     label: 'Contato' },
   { href: '#localizacao', label: 'Localização' },
 ];
