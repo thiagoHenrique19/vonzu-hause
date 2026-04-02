@@ -1,0 +1,204 @@
+.section {
+  padding: 120px 0;
+  background: var(--ink-900);
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 80px;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(232,168,0,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(140,98,57,0.08) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.header {
+  margin-bottom: 60px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ─── CARD ─── */
+.cardWrap { perspective: 1200px; }
+
+.card {
+  height: 100%;
+  cursor: default;
+}
+
+.cardInner {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.card:hover .cardInner {
+  border-color: rgba(232,168,0,0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(232,168,0,0.08);
+}
+
+/* glare overlay */
+.glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  transition: background 0.1s;
+  z-index: 2;
+}
+
+/* ─── ICON AREA (top banner) ─── */
+.iconArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 20px 28px;
+  gap: 16px;
+  z-index: 1;
+}
+
+/* subtle mesh/noise overlay for icon area */
+.iconArea::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* outer glow ring */
+.iconRing {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* inner icon circle */
+.iconCircle {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.35s ease;
+}
+
+.card:hover .iconCircle {
+  transform: scale(1.08);
+}
+
+/* tag badge */
+.tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--r-full);
+  border: 1px solid;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── TEXT BODY ─── */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 24px 24px;
+  flex: 1;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--white);
+}
+
+.desc {
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.65;
+  flex: 1;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 4px;
+  transition: gap 0.2s, opacity 0.2s;
+}
+
+.btn:hover { gap: 10px; opacity: 0.85; }
+
+/* bottom accent line */
+.bottomLine {
+  height: 1px;
+  width: 100%;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.card:hover .bottomLine { opacity: 1; }
+
+/* ─── BOTTOM CTA ─── */
+.bottomCta {
+  margin-top: 56px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.bottomCta p {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.95rem;
+}
+
+.ctaLink {
+  color: var(--gold-400);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(232,168,0,0.35);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.ctaLink:hover { color: var(--gold-300); border-color: var(--gold-300); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }

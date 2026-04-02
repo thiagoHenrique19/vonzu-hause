@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+
+/* ─── DESIGN TOKENS ─── */
+:root {
+  /* Brand */
+  --gold-100: #fef9ec;
+  --gold-200: #fdefc3;
+  --gold-300: #fbdf8b;
+  --gold-400: #f8c842;
+  --gold-500: #e8a800;
+  --gold-600: #c48600;
+  --gold-700: #9a6200;
+  --gold-800: #6b4100;
+
+  --earth-50:  #faf6f1;
+  --earth-100: #f2e9dc;
+  --earth-200: #e0ccb0;
+  --earth-300: #c9a87a;
+  --earth-400: #b08450;
+  --earth-500: #8c6239;
+  --earth-600: #6e4a26;
+  --earth-700: #523318;
+  --earth-800: #3b2310;
+  --earth-900: #1e1009;
+
+  --ink-900: #0d0a07;
+  --ink-800: #1a140d;
+  --ink-700: #2c2318;
+
+  --white: #ffffff;
+  --off-white: #faf7f2;
+  --muted: rgba(255,255,255,0.55);
+
+  /* Spacing rhythm */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  32px;
+  --space-xl:  64px;
+  --space-2xl: 120px;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Radii */
+  --r-sm: 6px;
+  --r-md: 14px;
+  --r-lg: 24px;
+  --r-xl: 40px;
+  --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-glow: 0 0 60px rgba(232,168,0,0.15);
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.04), 0 12px 40px rgba(0,0,0,0.08);
+  --shadow-lift: 0 8px 16px rgba(0,0,0,0.06), 0 32px 80px rgba(0,0,0,0.14);
+  --shadow-xl: 0 40px 100px rgba(0,0,0,0.2);
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 0.2s;
+  --t-base: 0.35s;
+  --t-slow: 0.6s;
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: auto; /* lenis handles smooth */
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--off-white);
+  color: var(--earth-900);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none; /* custom cursor */
+}
+
+@media (pointer: coarse) { body { cursor: auto; } }
+
+h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.1; }
+a { text-decoration: none; color: inherit; }
+button { cursor: none; font-family: var(--font-sans); border: none; outline: none; }
+input, textarea { font-family: var(--font-sans); }
+
+#root { width: 100%; }
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--ink-900); }
+::-webkit-scrollbar-thumb { background: var(--gold-500); border-radius: 3px; }
+
+/* ─── NOISE TEXTURE overlay ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 1;
+}
+
+/* ─── UTILITY ─── */
+.container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  margin-bottom: 18px;
+}
+
+.eyebrow::before, .eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold-500);
+}
+
+/* section heading */
+.section-h {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  color: var(--earth-800);
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--earth-400);
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+/* ─── SELECTION ─── */
+::selection { background: var(--gold-400); color: var(--ink-900); }
