@@ -5,7 +5,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Products from './components/Products';
-import Reviews from './components/Reviews';
 import Contact from './components/Contact';
 import MapSection from './components/MapSection';
 import Footer from './components/Footer';
@@ -36,7 +35,6 @@ function App() {
         <Hero />
         <About />
         <Products />
-        <Reviews />
         <Contact />
         <MapSection />
       </main>
